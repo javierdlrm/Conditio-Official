@@ -1,0 +1,31 @@
+{
+    "termsAndConditions": "Términos & Condiciones",
+
+    "refunds": "Reembolsos",
+    "returns": "Devoluciones",
+    "guarantees": "Garantías",
+    "responsibilities": "Responsibilidades",
+    "paymentMethods": "Métodos de pago",
+
+    "category": "Categoría",
+    "entity": "Entidad",
+    "url": "Enlace"
+,
+    "home.intro.slogan": "Transparencia legal en tus compras por internet",
+    "home.intro.description": "Cada vez que compramos algo, firmamos un contrato. Pero, ¿sabes realmente qué estás aceptando?",
+    "home.intro.list.1": "Conoce si tus términos y condiciones están establecidos de acuerdo a la legislación aplicable",
+    "home.intro.list.2": "Compara términos y condiciones de tus principales páginas web para decidir cual se adapta a tus necesidades",
+    "home.intro.list.3": "Recibe notificaciones de vencimiento de garantías y suscripciones",
+    "home.intro.list.4": "Asocia Conditio a tu cuenta bancaria para registrar automáticamente las compras que te interesen"
+,
+    "nav-menu.contactUs": "Contáctanos",
+    "nav-menu.meetUs": "Conócenos"
+,
+    "terms-search-form.label": "¿Qué términos quieres resumir?",
+    "terms-search-form.placeholder": "Nombre de empresa ó Url de producto",
+    "terms-search-form.buttonText": "Consultar",
+    "terms-search-form.compareButtonText": "Comparar"
+,
+    "terms.grid.showMore": "Mostrar {{ numItems }} elementos más",
+    "terms.grid.showLess": "Mostrar menos"
+}

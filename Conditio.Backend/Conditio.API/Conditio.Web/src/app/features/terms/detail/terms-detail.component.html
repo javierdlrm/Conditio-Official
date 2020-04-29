@@ -1,0 +1,32 @@
+<div class="terms-detail-wrapper">
+    <div class="terms-detail-content">
+        <div class="terms-detail-header">
+            <div class="terms-detail-info">
+                <p class="subtitle terms-detail-title">{{ category.name | translate }}</p>
+                <shared-rating [rate]="3" [size]="'large'"></shared-rating>
+            </div>
+            <span class="terms-detail-icon text-right">
+                <svg-icon src="{{icon}}" [svgStyle]="{ 'width.px': 100, 'height.px': 100 }"></svg-icon>
+            </span>
+        </div>
+        <div class="terms-detail-body">
+            <div class="terms-detail-concepts">
+                <ul>
+                    <li *ngFor="let concept of category.concepts">
+                        <p>
+                            <fa-icon [icon]="['fas', 'circle']"></fa-icon>
+                            {{ concept.description }}
+                            <span *ngIf="concept.period" class="period">{{ concept.period }}</span>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="terms-grid-cell-footer" (click)="closeDetail()">
+        <div class="terms-grid-cell-footer-label">
+            <p>{{ 'terms.grid.showLess' | translate }}</p>
+        </div>
+        <fa-icon class="terms-grid-cell-footer-icon" [icon]="['fas', 'chevron-up']"></fa-icon>
+    </div>
+</div>

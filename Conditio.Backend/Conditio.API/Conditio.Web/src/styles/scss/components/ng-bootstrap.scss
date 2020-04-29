@@ -1,0 +1,10 @@
+/*
+*   Ng bootstrap
+*/
+
+@import '../base';
+
+.dropdown-item.active, .dropdown-item:active {
+    color: $palette-color-1;
+    background-color: $palette-color-4;
+}

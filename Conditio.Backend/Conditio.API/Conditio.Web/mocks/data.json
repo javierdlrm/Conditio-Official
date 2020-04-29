@@ -1,0 +1,83 @@
+{
+    "assetWithTerms": {
+        "id": "5cb1eea71c9d4400006b5bf9",
+        "name": "Vans Old Skool black and white",
+        "category": "Shoes",
+        "source": {
+            "url": "/shoes/45",
+            "scopes": [
+                "Base",
+                "Shoes"
+            ],
+            "entity": {
+                "terms": {
+                    "returns": [
+                        {
+                            "concept": "Productos generales",
+                            "period": 1
+                        },
+                        {
+                            "concept": "Productos higiénicos",
+                            "period": 0
+                        },
+                        {
+                            "concept": "Productos defectuosos",
+                            "period": 730
+                        }
+                    ],
+                    "refunds": [],
+                    "guarantees": [
+                        {
+                            "concept": "Productos electrónicos",
+                            "period": 730
+                        }
+                    ],
+                    "paymentMethods": [
+                        "Paypal",
+                        "Credit card"
+                    ],
+                    "responsibilities": [
+                        "Amazon SLA. Responsibility"
+                    ]
+                },
+                "id": "5cae375f1c9d440000a5a2fd",
+                "name": "Amazon",
+                "domain": "amazon'com",
+                "category": "E-Commerce"
+            }
+        }
+    },
+    "assetWithSources": {
+        "id": "5cb1eea71c9d4400006b5bf9",
+        "name": "Vans Old Skool black and white",
+        "category": "Shoes",
+        "sources": [
+            {
+                "url": "/old_skool/46",
+                "scopes": [
+                    "Base",
+                    "Old skool"
+                ],
+                "entity": {
+                    "id": "5cb20d49652ae6000086150a",
+                    "name": "Vans",
+                    "domain": "vans'com",
+                    "category": "E-Commerce"
+                }
+            },
+            {
+                "url": "/shoes/45",
+                "scopes": [
+                    "Base",
+                    "Shoes"
+                ],
+                "entity": {
+                    "id": "5cae375f1c9d440000a5a2fd",
+                    "name": "Amazon",
+                    "domain": "amazon'com",
+                    "category": "E-Commerce"
+                }
+            }
+        ]
+    } 
+}

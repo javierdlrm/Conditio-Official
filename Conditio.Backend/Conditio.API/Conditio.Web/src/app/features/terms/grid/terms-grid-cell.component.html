@@ -1,0 +1,32 @@
+<div class="terms-grid-cell" (click)="onClick()">
+    <div class="terms-grid-cell-content">
+        <div class="terms-grid-cell-header">
+            <div class="terms-grid-cell-info">
+                <p class="subsubtitle terms-grid-cell-title">{{ category.name | translate }}</p>
+                <shared-rating [rate]="3" [size]="'medium'"></shared-rating>
+            </div>
+            <span class="terms-grid-cell-icon">
+                <svg-icon src="{{icon}}" [svgStyle]="{ 'width.px': 75, 'height.px': 75 }"></svg-icon>
+            </span>
+        </div>
+        <div class="terms-grid-cell-body">
+            <div class="terms-grid-cell-concepts">
+                <ul>
+                    <li *ngFor="let concept of category.concepts.slice(0,maxItems)">
+                        <p>
+                            <fa-icon [icon]="['fas', 'circle']"></fa-icon>
+                            {{ concept.description }}
+                            <span *ngIf="concept.period" class="period">{{ concept.period }}</span>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="terms-grid-cell-footer">
+        <div class="terms-grid-cell-footer-label">
+            <p *ngIf="category.concepts.length > maxItems">{{ 'terms.grid.showMore' | translate:diffItems }}</p>
+        </div>
+        <fa-icon class="terms-grid-cell-footer-icon" [icon]="['fas', 'chevron-down']"></fa-icon>
+    </div>
+</div>

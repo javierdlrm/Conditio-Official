@@ -1,0 +1,26 @@
+<main class="terms-overview-main">
+
+  <section class="info">
+    <h1 class="title">{{ subject?.name }}</h1>
+    <h5 class="subsubtitle">{{ subject?.category }}</h5>
+  </section>
+
+  <section *ngIf="subject?.source" class="details">
+    <div class="d-flex justify-content-around">
+      <p><span>{{ 'url' | translate }}:</span>{{subject.source.url}}</p>
+      <p><span>{{ 'entity' | translate }}:</span>{{subject.source.entity.name}}</p>
+      <p><span>{{ 'category' | translate }}:</span>{{subject.source.entity.category}}</p>
+    </div>
+  </section>
+
+  <section class="terms row no-gutters">
+    <h3 class="subtitle col-12">{{ 'termsAndConditions' | translate }}</h3>
+    <section class="summary" [ngClass]="{'col-12': layout === 'summary', 'col-4': layout === 'detail'}">
+      <terms-grid [terms]="terms" [oneColumn]="layout !== 'summary'" (categorySelected)="categorySelected($event)"></terms-grid>
+    </section>
+    <section *ngIf="termsCategory" class="detail col-8">
+      <terms-detail [category]="termsCategory" (close)="closeDetail()"></terms-detail>
+    </section>
+  </section>
+
+</main>

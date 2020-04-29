@@ -1,0 +1,35 @@
+/*
+*   Typography
+*/
+
+@import "../base";
+
+.title {
+  font-family: $font-family-1;
+  font-size: $font-size-1;
+  padding: 24px 0;
+  color: $palette-color-1;
+  text-align: center;
+}
+
+.subtitle {
+  font-family: $font-family-2;
+  font-weight: lighter;
+  font-size: $font-size-3;
+  padding: 16px;
+  color: $palette-color-2;
+  text-align: center;
+}
+
+.subsubtitle{
+  font-family: $font-family-2;
+  font-size: $font-size-4;
+  font-weight: bold;
+  color: $palette-color-3;
+  text-align: center;
+}
+
+.info {
+  font-family: $font-family-2;
+  font-size: $font-size-5;
+}

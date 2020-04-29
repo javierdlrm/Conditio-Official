@@ -1,0 +1,43 @@
+@import "~src/styles/scss/partials/colors";
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+}
+
+.sign-in-text {
+  color: $palette-color-3 !important;
+
+  &:hover {
+    color: $palette-color-2 !important;
+  }
+}
+
+.button-menu {
+  border: none;
+}
+
+.navbar-nav {
+  flex: 0;
+
+  li a {
+    white-space: nowrap;
+  }
+}
+
+.navbar-form {
+  flex: 1;
+  margin: 0 3rem;
+}
+
+.navbar-lang,
+.navbar-lang label {
+  margin: 0 0 0 4px;
+}

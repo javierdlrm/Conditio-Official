@@ -1,0 +1,6 @@
+{
+    "terms-search-form.label": "¿Which terms do you want to summarize?",
+    "terms-search-form.placeholder": "Company name or Url of the product",
+    "terms-search-form.buttonText": "Search",
+    "terms-search-form.compareButtonText": "Compare"
+}

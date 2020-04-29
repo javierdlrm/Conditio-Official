@@ -1,0 +1,7 @@
+<div class="terms-grid">
+    <div class="row no-gutters">
+        <terms-grid-cell *ngFor="let category of terms"
+            [ngClass]="{'col-md-4 col-sm-6 col-xs-12': !oneColumn, 'col-12': oneColumn}" [category]="category"
+            (selected)="select(category)"></terms-grid-cell>
+    </div>
+</div>

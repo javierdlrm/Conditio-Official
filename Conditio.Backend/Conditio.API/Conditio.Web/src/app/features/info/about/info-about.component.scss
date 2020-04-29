@@ -1,0 +1,42 @@
+@import "~src/styles/scss/partials/colors";
+@import "~src/styles/scss/partials/typography";
+
+.intro {
+  .author {
+    color: gray;
+    font-size: 22px;
+    margin-left: 20px;
+  }
+}
+
+.profiles {
+
+  .profiles-section {
+    text-align: center;
+
+    .profiles-name {
+
+      margin-top: 20px;
+
+      a {
+        font-family: $font-family-1;
+        font-size: 24px;
+        color: $palette-color-3;
+        text-decoration: none;
+
+        &:hover {
+          color: $palette-color-2;
+        }
+      }
+
+    }
+
+    .profiles-image {
+      width: 230px;
+      border-radius: 100%;
+      height: 230px;
+      padding: 6px;
+      border: 2px solid $palette-color-4;
+    }
+  }
+}

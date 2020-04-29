@@ -1,0 +1,104 @@
+/*
+*   TAGS
+*/
+
+@import "../base";
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+section {
+  margin: 6px 0;
+
+  &.section-1 {
+    margin: 40px 0;
+  }
+  &.section-1-t {
+    margin: 40px 0 0 0;
+  }
+  &.section-1-b {
+    margin: 0 0 40px 0;
+  }
+  &.section-2 {
+    margin: 28px 0;
+  }
+  &.section-2-t {
+    margin: 28px 0 0 0;
+  }
+  &.section-2-b {
+    margin: 0 0 28px 0;
+  }
+  &.section-3 {
+    margin: 12px 0;
+  }
+  &.section-3-t {
+    margin: 12px 0 0 0;
+  }
+  &.section-3-b {
+    margin: 0 0 12px 0;
+  }
+  &.section-4-t {
+    margin: 6px 0 0 0;
+  }
+  &.section-4-b {
+    margin: 0 0 6px 0;
+  }
+  &.section-none {
+    margin: 0;
+  }
+}
+
+ul {
+  list-style-type: none;
+
+  li {
+    margin: 6px 0;
+    font-family: $font-family-2;
+    font-weight: lighter;
+  }
+}
+
+p {
+  font-family: $font-family-2;
+  font-weight: lighter;
+  font-size: $font-size-6;
+}
+
+label {
+  font-family: $font-family-2;
+  font-size: 16px;
+  color: $palette-color-1;
+}
+
+h1 {
+  font-family: $font-family-1;
+  font-size: $font-size-1;
+}
+
+h2 {
+  font-family: $font-family-1;
+  font-size: $font-size-2;
+}
+
+h3 {
+  font-family: $font-family-2;
+  font-size: $font-size-3;
+}
+
+h4 {
+  font-family: $font-family-2;
+  font-size: $font-size-4;
+}
+
+h5 {
+  font-family: $font-family-2;
+  font-size: $font-size-5;
+}
+
+h6 {
+  font-family: $font-family-2;
+  font-size: $font-size-6;
+}

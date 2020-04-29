@@ -1,0 +1,116 @@
+@import "~src/styles/scss/partials/colors";
+
+.terms-grid-cell {
+  margin: 0.3rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.15s ease-in-out;
+  border: 1px solid #dee2e6;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+    -webkit-box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+
+    .terms-grid-cell-footer .terms-grid-cell-footer-icon {
+      color: $palette-color-2 !important;
+    }
+  }
+
+  .terms-grid-cell-content {
+    display: flex;
+    flex-direction: column;
+    padding: 1.2rem;
+
+    .terms-grid-cell-header {
+      display: flex;
+      flex-flow: row nowrap;
+
+      .terms-grid-cell-info {
+        flex: 1 1;
+
+        .terms-grid-cell-title {
+          text-align: left;
+          margin-bottom: 12px;
+          color: $palette-color-2;
+        }
+
+        .rating {
+          .rating-star {
+            margin-right: 6px;
+          }
+        }
+      }
+
+      .terms-grid-cell-icon {
+        flex: 0 10;
+      }
+    }
+
+    .terms-grid-cell-body {
+      margin-top: 14px;
+
+      .description {
+        margin: 0;
+      }
+
+      .terms-grid-cell-concepts {
+        ul {
+          margin: 0;
+          padding: 0;
+
+          p {
+            margin: 0;
+            display: table;
+            width: 100%;
+            text-align: left;
+
+            fa-icon {
+              display: table-cell;
+              vertical-align: middle;
+              color: $palette-color-3;
+              width: 16px;
+              font-size: 8px;
+            }
+
+            .period {
+              display: table-cell;
+              vertical-align: middle;
+              text-align: right;
+              font-size: 1.2rem;
+              font-weight: bold;
+              color: $palette-color-1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .terms-grid-cell-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top: 1px solid #dee2e6;
+    padding: 0.2rem 0.8rem;
+
+    .terms-grid-cell-footer-label {
+      flex: 1 1;
+
+      p {
+        margin: 0;
+        font-size: 0.8rem;
+
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .terms-grid-cell-footer-icon {
+      flex: 0 0;
+      font-size: 20px;
+      color: $palette-color-3;
+    }
+  }
+}

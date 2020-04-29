@@ -1,0 +1,12 @@
+<form #termsSearchForm="ngForm" (ngSubmit)="onSubmit()">
+  <label *ngIf="label" class="info">{{ 'terms-search-form.label' | translate }}</label>
+  <div class="terms-search-form-content">
+    <input class="form-control input-terms-search" name="selectedQuery" type="text" placeholder="{{ 'terms-search-form.placeholder' | translate }}"
+      [(ngModel)]="selectedQuery" [ngbTypeahead]="search" [resultFormatter]="formatter" [inputFormatter]="formatter"
+      [editable]="false" required>
+    <button class="btn btn-default button-primary button-submit w-100-md" type="submit"
+      [disabled]="!termsSearchForm.valid" href="#">{{ 'terms-search-form.buttonText' | translate }}</button>
+    <button *ngIf="comparison" class="btn btn-default button-primary button-submit w-100-md" type="button" (click)="compareTo()"
+      [disabled]="!termsSearchForm.valid" href="#">{{ 'terms-search-form.compareButtonText' | translate }}</button>
+  </div>
+</form>

@@ -1,0 +1,29 @@
+db.Assets.aggregate(
+    { "$match" : { "$and" : [{ "_id" : ObjectId("5cb1eea71c9d4400006b5bf9") }, { "sources" : { "$elemMatch" : { "_id" : ObjectId("5cb1eee5652ae60000861502") } } }] } },
+    { "$addFields" : { "source" : { "$arrayElemAt" : [{ "$filter" : { "input" : "$sources", "as" : "source", "cond" : { "$eq" : ["$$source._id", ObjectId("5cb1eee5652ae60000861502")] } } }, 0] } } },
+    { "$project" : { "sources" : 0, "source._id" : 0 } },
+    { "$lookup" : { "from" : "Entities",
+        "let" : { "domain" : "$source.domain", "scopes" : "$source.scopes" },
+        "pipeline" : [
+            { "$match" : { "$expr" : { "$eq" : [ "$domain", "$$domain"] } } },
+            {
+                "$addFields" : { "terms" : { "$filter" : { "input" : "$terms", "as" : "term", "cond" : { "$in" : ["$$term.scope", "$$scopes"] } } } }
+            },
+            { 
+                "$addFields" : { "terms" : {
+                    "$reduce" : { "input" : "$terms", "initialValue" : { "returns" : [], "refunds" : [], "guarantees" : [], "paymentMethods": [], "responsibilities": [] }, "in" : {
+                        "returns" : { "$concatArrays" : ["$$value.returns", { "$ifNull" : ["$$this.returns", []] }] },
+                        "refunds" : { "$concatArrays" : ["$$value.refunds", { "$ifNull" : ["$$this.refunds", []] }] },
+                        "guarantees" : { "$concatArrays" : ["$$value.guarantees", { "$ifNull" : ["$$this.guarantees", []] }] },
+                        "paymentMethods" : { "$concatArrays" : ["$$value.paymentMethods", { "$ifNull" : ["$$this.paymentMethods", []] }] },
+                        "responsibilities" : { "$concatArrays" : ["$$value.responsibilities", { "$ifNull" : ["$$this.responsibilities", []] }] }
+                    } } }
+                }
+            },
+            { "$addFields" : { "terms.returns" : { "$reduce" : { "input" : { "$reverseArray" : "$terms.returns" }, "initialValue" : [], "in" : {
+                "$concatArrays" : ["$$value", { "$cond" : {
+                    "if" : { "$ne" : [{ "$size" : { "$filter" : { "input" : "$$value", "as" : "v", "cond" : { "$eq" : ["$$v.concept", "$$this.concept"] } } } }, 0] }, "then" : [], "else" : ["$$this"] } }] } } }, "terms.refunds" : { "$reduce" : { "input" : { "$reverseArray" : "$terms.refunds" }, "initialValue" : [], "in" : { "$concatArrays" : ["$$value", { "$cond" : { "if" : { "$ne" : [{ "$size" : { "$filter" : { "input" : "$$value", "as" : "v", "cond" : { "$eq" : ["$$v.concept", "$$this.concept"] } } } }, 0] }, "then" : [], "else" : ["$$this"] } }] } } }, "terms.guarantees" : { "$reduce" : { "input" : { "$reverseArray" : "$terms.guarantees" }, "initialValue" : [], "in" : { "$concatArrays" : ["$$value", { "$cond" : { "if" : { "$ne" : [{ "$size" : { "$filter" : { "input" : "$$value", "as" : "v", "cond" : { "$eq" : ["$$v.concept", "$$this.concept"] } } } }, 0] }, "then" : [], "else" : ["$$this"] } }] } } }, "terms.paymentMethods" : "$terms.paymentMethods", "terms.responsibilities" : "$terms.responsibilities" } }], "as" : "entity" } },
+    { "$addFields" : { "source.entity" : { "$arrayElemAt" : ["$entity", 0] } } },
+    { "$addFields" : { "sources" : ["$source"] } },
+    { "$project" : { "entityId" : 0, "entity" : 0, "source" : 0, "sources.domain" : 0 } }
+).pretty()

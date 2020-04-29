@@ -1,0 +1,9 @@
+{
+    "_id": ObjectId("5cb046911c9d440000ebd5be"),
+    "entityId": ObjectId("5cae375f1c9d440000a5a2fd"),
+    "asset": {
+        "url": "/shoes/45",
+        "assetId": ObjectId("5cb1eea71c9d4400006b5bf9"),
+        "sourceId": ObjectId("5cb1eee5652ae60000861502")
+    }
+}

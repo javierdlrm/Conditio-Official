@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"Conditio-Prod-Db.Assets"},{"v":2,"unique":true,"key":{"sources._id":1},"name":"sources._id_1","background":true,"ns":"Conditio-Prod-Db.Assets"}],"uuid":"1b7a62739edc4a64a60a2120f7125e8d"}

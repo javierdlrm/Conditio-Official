@@ -1,0 +1,26 @@
+db.Domains.aggregate(
+    { $match: { $and: [ { name: "amazon'com" }, { assets: { $elemMatch: { url: "/shoes/45" } } } ] } },
+    { $project: { asset: { $arrayElemAt: [ { $filter: { input: "$assets", as: "asset", cond: { $eq: [ "$$asset.url", "/shoes/45"] } } } , 0 ] } } },
+    { $lookup: { from : "Assets",
+        let: { assetId: "$asset.assetId" },
+        pipeline: [
+            { $match: {
+                $expr: { $eq: [ "$_id",  "$$assetId" ] } }
+            }
+        ], as: "asset" } },
+    { $replaceRoot: { newRoot: { $mergeObjects: [ "$$ROOT", { $arrayElemAt: [ "$asset" , 0 ] } ] } } },
+    { $project: { asset: 0 } },
+    { $unwind: "$sources" },
+    { $lookup: { from: "Entities",
+        let: { domain: "$sources.domain" },
+        pipeline: [
+            { $match:  { $expr: { $eq: [ "$domain", "$$domain" ] } } },
+            { $project: { terms: 0 } }
+        ], as: "entity" } },
+    { $addFields: { "sources.entity": { $arrayElemAt: [ "$entity", 0 ] } }  },
+    { $project: { "sources._id": 0, "sources.domain": 0 } },
+    { $group: { "_id": "$_id", "data": { "$first": "$$ROOT" }, "sources": { $addToSet: "$sources" } } },
+    { $project: { "data.sources": 0, "data.entity": 0 } },
+    { $replaceRoot: { newRoot: { $mergeObjects: [ "$data", "$$ROOT" ] } } },
+    { $project: { "data": 0 } }
+).pretty()

@@ -1,0 +1,26 @@
+{
+    "termsAndConditions": "Terms & Conditions",
+
+    "refunds": "Refunds",
+    "returns": "Returns",
+    "guarantees": "Guarantees",
+    "responsibilities": "Responsibilities",
+    "paymentMethods": "Payment methods",
+
+    "category": "Category",
+    "entity": "Entity",
+    "url": "Url"
+,
+    "home.intro.slogan": "Legal transparency in your online purchases"
+,
+    "terms.grid.showMore": "Show {{ numItems }} items more",
+    "terms.grid.showLess": "Show less"
+,
+    "nav-menu.contactUs": "Contact us",
+    "nav-menu.meetUs": "Know us"
+,
+    "terms-search-form.label": "¿Which terms do you want to summarize?",
+    "terms-search-form.placeholder": "Company name or Url of the product",
+    "terms-search-form.buttonText": "Search",
+    "terms-search-form.compareButtonText": "Compare"
+}

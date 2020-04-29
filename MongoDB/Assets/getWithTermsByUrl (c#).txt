@@ -1,0 +1,60 @@
+db.Domains.aggregate(
+    { "$match": { "$and" : [{ "name" : "amazon'com" }, { "assets" : { "$elemMatch" : { "url" : "/shoes/45" } } }] } },
+    { "$project": { "entityId" : 1, "asset" : { "$arrayElemAt" : [{ "$filter" : { "input" : "$assets", "as" : "asset", "cond" : { "$eq" : ["$$asset.url", "/shoes/45"] } } }, 0] } } },
+    { "$lookup": { "from" : "Assets",
+        "let": { "assetId" : "$asset.assetId", "sourceId" : "$asset.sourceId" },
+        "pipeline": [
+            { "$match": 
+                { "$expr": 
+                    { "$and": [
+                        { "$eq" : ["$_id", "$$assetId"] },
+                        { "$filter" : { "input" : "$sources", "as" : "source", "cond" : { "$eq" : ["$$source._id", "$$sourceId"] } } }
+                    ] }
+                }
+            },
+            { "$addFields" : { "source" : { "$arrayElemAt" : ["$sources", 0] } } },
+            { "$project" : { "sources" : 0, "source.domain": 0} }
+        ], "as" : "asset" } },
+    { "$replaceRoot" : { "newRoot" : { "$mergeObjects" : ["$$ROOT", { "$arrayElemAt" : ["$asset", 0] } ] } } },
+    { "$project" : { "asset" : 0 } },
+    { "$lookup" : { "from" : "Entities",
+        "let" : { "entityId" : "$entityId", "scopes" : "$source.scopes" },
+        "pipeline" : [
+            { "$match" : { "$expr" : { "$eq" : ["$_id", "$$entityId"] } } },
+            { 
+                "$addFields" : { "terms" : { "$filter" : { "input" : "$terms", "as" : "term", "cond" : { "$in" : ["$$term.scope", "$$scopes"] } } } }
+            },
+            { 
+                "$addFields" : { "terms" : {
+                    "$reduce" : { "input": "$terms", "initialValue": { "returns": [], "refunds": [], "guarantees": [], "paymentMethods": [], "responsibilities": [] }, "in" : {
+                        "returns" : { "$concatArrays" : ["$$value.returns", { "$ifNull" : ["$$this.returns", []] }] },
+                        "refunds" : { "$concatArrays" : ["$$value.refunds", { "$ifNull" : ["$$this.refunds", []] }] },
+                        "guarantees" : { "$concatArrays" : ["$$value.guarantees", { "$ifNull" : ["$$this.guarantees", []] }] },
+                        "paymentMethods" : { "$concatArrays" : ["$$value.paymentMethods", { "$ifNull" : ["$$this.paymentMethods", []] }] },
+                        "responsibilities" : { "$concatArrays" : ["$$value.responsibilities", { "$ifNull" : ["$$this.responsibilities", []] }] }
+                        } } }
+                }
+            },
+            { 
+                "$addFields" : {
+                    "terms.returns" : { "$reduce" : { "input" : { "$reverseArray" : "$terms.returns" }, "initialValue" : [], "in" : {
+                        "$concatArrays" : ["$$value", { "$cond" : {
+                            "if" : { "$ne" : [{ "$size" : { "$filter" : { "input" : "$$value", "as" : "v", "cond" : { "$eq" : ["$$v.concept", "$$this.concept"] } } } }, 0] }, "then" : [], "else" : ["$$this"]
+                        } } ] } } },
+                    "terms.refunds" : { "$reduce" : { "input" : { "$reverseArray" : "$terms.refunds" }, "initialValue" : [], "in" : {
+                        "$concatArrays" : ["$$value", { "$cond" : {
+                            "if" : { "$ne" : [{ "$size" : { "$filter" : { "input" : "$$value", "as" : "v", "cond" : { "$eq" : ["$$v.concept", "$$this.concept"] } } } }, 0] }, "then" : [], "else" : ["$$this"]
+                        } } ] } } },
+                    "terms.guarantees" : { "$reduce" : { "input" : { "$reverseArray" : "$terms.guarantees" }, "initialValue" : [], "in" : {
+                        "$concatArrays" : ["$$value", { "$cond" : {
+                            "if" : { "$ne" : [{ "$size" : { "$filter" : { "input" : "$$value", "as" : "v", "cond" : { "$eq" : ["$$v.concept", "$$this.concept"] } } } }, 0] }, "then" : [], "else" : ["$$this"]
+                        } } ] } } },
+                    "terms.paymentMethods" : "$terms.paymentMethods",
+                    "terms.responsibilities" : "$terms.responsibilities"
+                }
+            }
+        ], "as" : "entity" } },
+    { "$addFields" : { "source.entity" : { "$arrayElemAt" : ["$entity", 0] } } },
+    { "$addFields" : { "sources" : ["$source"] } },
+    { "$project" : { "entityId" : 0, "entity": 0, "source" : 0 } }
+).pretty()

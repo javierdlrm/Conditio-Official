@@ -1,0 +1,16 @@
+@import "~src/styles/scss/partials/colors";
+
+.terms-grid {
+  .border-right {
+    border-right: 0.25rem solid $palette-color-5;
+  }
+  .border-left {
+    border-left: 0.25rem solid $palette-color-5;
+  }
+  .border-top {
+    border-top: 0.25rem solid $palette-color-5;
+  }
+  .border-bottom {
+    border-bottom: 0.25rem solid $palette-color-5;
+  }
+}

@@ -1,0 +1,4 @@
+{
+    "/api/assets?url=:url&terms=true": "/api/assetsWithTerms",
+    "/api/assets?url=:url&terms=false": "/api/assetsWithSources"
+}

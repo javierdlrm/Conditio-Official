@@ -1,0 +1,4 @@
+{
+    "terms.grid.showMore": "Show {{ numItems }} items more",
+    "terms.grid.showLess": "Show less"
+}

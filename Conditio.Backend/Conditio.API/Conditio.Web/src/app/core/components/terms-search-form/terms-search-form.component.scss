@@ -1,0 +1,29 @@
+:host {
+  .info {
+    font-weight: bold;
+  }
+  
+  .terms-search-form-content {
+    display: flex;
+    flex-direction: row;
+
+    .input-terms-search {
+      flex: 1;
+      height: 48px;
+    }
+
+    .button-submit {
+      flex: 0;
+      margin-left: 2px;
+      height: 48px;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .button-submit {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 2px;
+  }
+}

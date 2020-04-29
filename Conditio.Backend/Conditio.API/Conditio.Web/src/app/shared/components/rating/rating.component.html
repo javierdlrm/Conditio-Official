@@ -1,0 +1,16 @@
+<div class="rating">
+    <svg-icon *ngIf="rate > 0" class="rating-star" src="assets/svg/star.svg" [svgStyle]="{ 'width.px': starSize, 'fill':'rgb(239,206,74)' }"></svg-icon>
+    <svg-icon *ngIf="rate <= 0" class="rating-star" src="assets/svg/star.svg" [svgStyle]="{ 'width.px': starSize, 'fill':'rgb(255,255,255)', 'stroke':'rgb(0,0,0)'  }"></svg-icon>
+
+    <svg-icon *ngIf="rate > 1" class="rating-star" src="assets/svg/star.svg" [svgStyle]="{ 'width.px': starSize, 'fill':'rgb(239,206,74)' }"></svg-icon>
+    <svg-icon *ngIf="rate <= 1" class="rating-star" src="assets/svg/star.svg" [svgStyle]="{ 'width.px': starSize, 'fill':'rgb(255,255,255)', 'stroke':'rgb(0,0,0)'  }"></svg-icon>
+
+    <svg-icon *ngIf="rate > 2" class="rating-star" src="assets/svg/star.svg" [svgStyle]="{ 'width.px': starSize, 'fill':'rgb(239,206,74)' }"></svg-icon>
+    <svg-icon *ngIf="rate <= 2" class="rating-star" src="assets/svg/star.svg" [svgStyle]="{ 'width.px': starSize, 'fill':'rgb(255,255,255)', 'stroke':'rgb(0,0,0)'  }"></svg-icon>
+
+    <svg-icon *ngIf="rate > 3" class="rating-star" src="assets/svg/star.svg" [svgStyle]="{ 'width.px': starSize, 'fill':'rgb(239,206,74)' }"></svg-icon>
+    <svg-icon *ngIf="rate <= 3" class="rating-star" src="assets/svg/star.svg" [svgStyle]="{ 'width.px': starSize, 'fill':'rgb(255,255,255)', 'stroke':'rgb(0,0,0)'  }"></svg-icon>
+
+    <svg-icon *ngIf="rate > 4" class="rating-star" src="assets/svg/star.svg" [svgStyle]="{ 'width.px': starSize, 'fill':'rgb(239,206,74)' }"></svg-icon>
+    <svg-icon *ngIf="rate <= 4" class="rating-star" src="assets/svg/star.svg" [svgStyle]="{ 'width.px': starSize, 'fill':'rgb(255,255,255)', 'stroke':'rgb(0,0,0)'  }"></svg-icon>
+</div>

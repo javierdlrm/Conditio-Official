@@ -1,0 +1,34 @@
+<main class="home-intro-main">
+
+  <section class="home-intro-header section-1">
+    <h1 class="title">Conditio</h1>
+    <h3 class="subtitle">{{ 'home.intro.slogan' | translate }}</h3>
+  </section>
+
+  <section class="home-intro-info section-3">
+    <h4 class="home-intro-info-header">{{ 'home.intro.description' | translate }}</h4>
+    <ul class="home-intro-info-list">
+      <li class="info">
+        <span>
+          <fa-icon [icon]="['fas', 'circle']"></fa-icon>
+        </span>{{ 'home.intro.list.1' | translate }}</li>
+      <li class="info">
+        <span>
+          <fa-icon [icon]="['fas', 'circle']"></fa-icon>
+        </span>{{ 'home.intro.list.2' | translate }}</li>
+      <li class="info">
+        <span>
+          <fa-icon [icon]="['fas', 'circle']"></fa-icon>
+        </span>{{ 'home.intro.list.3' | translate }}</li>
+      <li class="info">
+        <span>
+          <fa-icon [icon]="['fas', 'circle']"></fa-icon>
+        </span>{{ 'home.intro.list.4' | translate }}</li>
+    </ul>
+  </section>
+
+  <section class="home-intro-terms-search section-2">
+    <core-terms-search-form [label]="true"></core-terms-search-form>
+  </section>
+
+</main>
